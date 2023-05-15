@@ -1,13 +1,12 @@
 import Section from 'components/Section/Section';
 import user from 'data/user';
-import Profile from 'components/Profile/Profile';
-import statistics from "data/statistics";
-import Statistics from "components/Statistics/Statistics";
-import friends from "data/friends";
-import FriendList from "components/FriendList/FriendList";
-import transactions from "data/transactions.json";
-import TransactionHistory from "components/TransactionHistory/TransactionHistory";
-
+import Profile from 'components/Profile/profile';
+import statistics from 'data/statistics';
+import Statistics from 'components/Statistics/Statistics';
+import friends from 'data/friends';
+import FriendList from 'components/FriendList/FriendList';
+import transactions from 'data/transactions.json';
+import TransactionHistory from 'components/TransactionHistory/TransactionHistory';
 
 export const App = () => {
   return (
@@ -26,12 +25,12 @@ export const App = () => {
       </Section>
 
       <Section title="Friends">
-        <FriendList friends={friends}/>
+        <FriendList friends={friends} />
       </Section>
 
-      <Section title="Transaction history">        
+      <Section title="Transaction history">
         <TransactionHistory items={transactions} />
-      </Section>           
+      </Section>
     </>
   );
 };
