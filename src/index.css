@@ -14,11 +14,13 @@ code {
     monospace;
 }
 
-.containerApp {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: lightGrey;
+
+li,
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+

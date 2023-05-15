@@ -1,33 +1,58 @@
 import PropTypes from 'prop-types';
-import css from './Profile.module.css';
+import {
+  Avatar,
+  Name,
+  ProfileText,
+  StatsItem,
+  StatsNumber,
+} from './Profile.styled';
 
-export const Profile = ({ username, tag, location, avatar, stats }) => {
+import { Box } from 'components/Box.styled';
+
+export default function Profile({ username, tag, location, avatar, stats: { followers, views, likes } }) {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={avatar} alt={username} className={css.avatar} />
-        <p className={css.name}>{username}</p>
-        <p className={css.tag}>@{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+    <Box
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+      bg="componentBgColor"
+      borderRadius="2px"    
+      mx="auto"
+      width="280px"
+      boxShadow= "rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;"
+    >
+      <Box
+        display="flex"
+        alignItems="center"
+        flexDirection="column"
+        my={4}
+        mx="auto"
+        
+      >
+        <Avatar src={avatar} alt={`${username}'s avatar`} />
+        <Name>{username}</Name>
+        <ProfileText>{`@${tag}`}</ProfileText>
+        <ProfileText>{location}</ProfileText>
+      </Box>
 
-      <ul className={css.stats}>
-        <li>
-          <span className={css.label}>Followers</span>
-          <span className={css.quantity}>{stats.followers}</span>
-        </li>
-        <li>
-          <span className={css.label}>Views</span>
-          <span className={css.quantity}>{stats.views}</span>
-        </li>
-        <li>
-          <span className={css.label}>Likes</span>
-          <span className={css.quantity}>{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Box width="100%" display="flex" justifyContent="space-around" bg="rgb(0 0 0 / 10%)">
+        <StatsItem>
+          <span>Followers</span>
+          <StatsNumber>{followers}</StatsNumber>
+        </StatsItem>
+        <StatsItem>
+          <span>Views</span>
+          <StatsNumber>{views}</StatsNumber>
+        </StatsItem>
+        <StatsItem>
+          <span>Likes</span>
+          <StatsNumber>{likes}</StatsNumber>
+        </StatsItem>
+      </Box>
+    </Box>
   );
-};
+}
+
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
@@ -37,5 +62,5 @@ Profile.propTypes = {
     followers: PropTypes.number.isRequired,
     views: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
 };
